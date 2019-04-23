@@ -10,7 +10,6 @@ deploy-project:
       - sshpass -p $PROD_SERVER_PASS ssh -p$PROD_SERVER_PORT root@$PROD_SERVER_IP '(docker-compose -f '$PROD_ROOT_DIRECTORY'/docker-compose.yml down)'
       - sshpass -p $PROD_SERVER_PASS ssh -p$PROD_SERVER_PORT root@$PROD_SERVER_IP '(rm -r '$PROD_ROOT_DIRECTORY')'
       - sshpass -p $PROD_SERVER_PASS ssh -p$PROD_SERVER_PORT root@$PROD_SERVER_IP '(git clone -b master --single-branch http://'$GIT_USERNAME':'$GIT_PASSWORD'@'$GIT_URL' '$PROD_ROOT_DIRECTORY' )'
-      - sshpass -p $PROD_SERVER_PASS ssh -p$PROD_SERVER_PORT root@$PROD_SERVER_IP '(rm -r '$PROD_ROOT_DIRECTORY'\.git '$PROD_ROOT_DIRECTORY'\README.md )'
       - sshpass -p $PROD_SERVER_PASS ssh -p$PROD_SERVER_PORT root@$PROD_SERVER_IP '(docker-compose -f '$PROD_ROOT_DIRECTORY'/docker-compose.yml build --no-cache)'
       - sshpass -p $PROD_SERVER_PASS ssh -p$PROD_SERVER_PORT root@$PROD_SERVER_IP '(docker-compose -f '$PROD_ROOT_DIRECTORY'/docker-compose.yml up -d)'
       
