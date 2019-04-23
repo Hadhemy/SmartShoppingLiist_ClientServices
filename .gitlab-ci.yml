@@ -1,0 +1,10 @@
+stages:
+  - prod
+
+deploy-project:
+  stage: prod
+  only:
+    - master
+
+  script:
+      - sshpass -p $PROD_SERVER_PASS ssh -p$PROD_SERVER_PORT root@$PROD_SERVER_IP (docker-compose -f '$PROD_ROOT_DIRECTORY'/docker-compose.yml down)'
