@@ -1,12 +1,12 @@
 version: '2'
 services:
   smartlist_flask:
-    container_name: smartlist_flask
     build: ./app
-    #restart: always
     volumes:
-      - /home/dockerme_home/smartlist.test03.mind.engineering/app:/app
+      - ./app:/app
     environment:
       VIRTUAL_HOST: smartlist.test03.mind.engineering
       VIRTUAL_PORT: 5000
+    #ports:
+    #  5000:5000
     network_mode: bridge
